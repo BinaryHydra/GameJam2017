@@ -14,9 +14,11 @@ public class code_PlayerShoot : MonoBehaviour {
     private int ammo; // implement ammo when come back
     private bool weaponAuto;
     private bool meleeMode;
+    private Animator anim;
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         meleeMode = true;
         weaponAuto = false;
         changeWeapon(0);
@@ -70,6 +72,7 @@ public class code_PlayerShoot : MonoBehaviour {
         // Katana [0]
         if (type == 0)
         {
+            anim.SetTrigger("SwitchToKatana");
             meleeMode = true;
             Debug.Log("Changed to Katana!");
             reloadDefault = 0.46f;
@@ -78,6 +81,7 @@ public class code_PlayerShoot : MonoBehaviour {
         // Pistol [1]
         if (type == 1)
         {
+            anim.SetTrigger("SwitchToPistol");
             Debug.Log("Changed to Pistol!");
             ammo = 24;
             bulletSpeed = 21.7f;
@@ -88,6 +92,7 @@ public class code_PlayerShoot : MonoBehaviour {
         // AC470 [2]
         if (type == 2)
         {
+            anim.SetTrigger("SwitchToAk");
             Debug.Log("Changed to AK!");
             ammo = 47;
             bulletSpeed = 47.71f;
@@ -98,6 +103,7 @@ public class code_PlayerShoot : MonoBehaviour {
         // Shotgun [3]
         if (type == 3)
         {
+            anim.SetTrigger("SwitchToShotgun");
             Debug.Log("Changed to Shotgun!");
             ammo = 18;
             bulletSpeed = 27.6f;
