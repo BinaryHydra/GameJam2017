@@ -17,8 +17,11 @@ public class code_Megalodon : MonoBehaviour {
     private int maxBossHealth;
     private int currentBossHealth;
 
+    private Animator animator;
+
     void Start()
     {
+        animator = GetComponent<Animator>();
         // stateMode (Attack types)
         // Follow Player and Shoot Rockets [0]
         target = GameObject.FindGameObjectWithTag("Player");
@@ -64,9 +67,11 @@ public class code_Megalodon : MonoBehaviour {
         switch (stateMode)
         {
             case 0:
+                animator.SetTrigger("Chill");
                 state0();
                 break;
             case 1:
+                animator.SetTrigger("Angry");
                 pause = true;
                 StartCoroutine(state1());
                 break;
@@ -117,6 +122,7 @@ public class code_Megalodon : MonoBehaviour {
     void rocket()
     {
         if (rocketTimer > 0) rocketTimer -= Time.deltaTime;
+        if (rocketTimer < 0.5f) animator.SetTrigger("Angry");
         if (rocketTimer <= 0)
         {
             // Spawn rocket and reset timer
@@ -125,6 +131,7 @@ public class code_Megalodon : MonoBehaviour {
             newBullet.transform.position = gameObject.transform.position;
 
             rocketTimer = Random.Range(0.7f, 2f);
+            animator.SetTrigger("Chill");
         }
     }
 

@@ -79,13 +79,13 @@
     <Compile Include="Assets\Scripts\Background.cs" />
     <Compile Include="Assets\Scripts\Bullets\Util\code_BulletSpawn.cs" />
     <Compile Include="Assets\Scripts\Bullets\code_StaticBullet.cs" />
-    <Compile Include="Assets\Scripts\ButtonManager.cs" />
     <Compile Include="Assets\Scripts\Collision\code_CollisionDestroyDestroyable.cs" />
     <Compile Include="Assets\Scripts\Collision\code_CollisionHitPlayer.cs" />
     <Compile Include="Assets\Scripts\Despawn Scripts\code_DeleteBullet.cs" />
     <Compile Include="Assets\Scripts\Despawn Scripts\code_KatanaDespawn.cs" />
     <Compile Include="Assets\Scripts\Monsters\Bosses\code_Megalodon.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\code_BackGround.cs" />
     <Compile Include="Assets\Scripts\code_Bullet01.cs" />
     <Compile Include="Assets\Scripts\code_GunRotation.cs" />
