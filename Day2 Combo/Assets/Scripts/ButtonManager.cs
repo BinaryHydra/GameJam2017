@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class ButtonManager : MonoBehaviour {
+public class UIManager : MonoBehaviour
+{
 
     public GameObject Play;
     public GameObject Score;
@@ -14,7 +15,8 @@ public class ButtonManager : MonoBehaviour {
     public GameObject VeryBigChameleon;
     public GameObject MissTentacles;
     public GameObject PlayBack;
-
+    public GameObject AudioScrollbar;
+    public GameObject SoundSettings;
 
 
     public void PlayMygtukas()
@@ -77,6 +79,8 @@ public class ButtonManager : MonoBehaviour {
         Exit.SetActive(false);
         Settings.SetActive(false);
         SettingsBack.SetActive(true);
+        AudioScrollbar.SetActive(true);
+        SoundSettings.SetActive(true);
     }
 
     public void SettingsBackMygtukas()
@@ -86,6 +90,8 @@ public class ButtonManager : MonoBehaviour {
         Exit.SetActive(true);
         SettingsBack.SetActive(false);
         Settings.SetActive(true);
+        AudioScrollbar.SetActive(false);
+        SoundSettings.SetActive(false);
     }
 
     public void ScoreBackMygtukas()
@@ -96,5 +102,6 @@ public class ButtonManager : MonoBehaviour {
         ScoreBack.SetActive(false);
         Settings.SetActive(true);
     }
+
 
 }
