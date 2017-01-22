@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
     public int maxPlayerHealth;
     private int currentPlayerHealth;
     public GameObject hearth1;
@@ -24,12 +25,19 @@ public class PlayerController : MonoBehaviour {
             Destroy(collision.gameObject, 0.001f);
             if (currentPlayerHealth == 0) Destroy(gameObject, 0.001f);
 
+
+        }
+        if (collision.gameObject.tag == "PowerUP")
+        {
+            int randWeap = Random.Range(1, 5);
+            gameObject.GetComponent<code_PlayerShoot>().changeWeapon(randWeap);
+            Destroy(collision.gameObject, 0.001f);
         }
     }
 
     private void ReplaceHearth(int i)
     {
-        switch(i)
+        switch (i)
         {
             case 1:
                 hearth1.GetComponent<SpriteRenderer>().sprite = deadSprite;
@@ -47,13 +55,5 @@ public class PlayerController : MonoBehaviour {
                 hearth5.GetComponent<SpriteRenderer>().sprite = deadSprite;
                 break;
         }
-
-        if (collision.gameObject.tag == "PowerUP")
-        {
-            int randWeap = Random.Range(1, 5);
-            gameObject.GetComponent<code_PlayerShoot>().changeWeapon(randWeap);
-            Destroy(collision.gameObject, 0.001f);
-        }
     }
-
 }
