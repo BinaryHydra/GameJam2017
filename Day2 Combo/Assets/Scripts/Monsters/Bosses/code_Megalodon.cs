@@ -34,7 +34,7 @@ public class code_Megalodon : MonoBehaviour {
         sharkY_speed = 0.333f;
         maxY_Axis_Range = 5;
 
-        maxBossHealth = 200;
+        maxBossHealth = 320;
         currentBossHealth = maxBossHealth;
     }
 

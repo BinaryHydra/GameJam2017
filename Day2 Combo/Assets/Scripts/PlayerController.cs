@@ -47,6 +47,13 @@ public class PlayerController : MonoBehaviour {
                 hearth5.GetComponent<SpriteRenderer>().sprite = deadSprite;
                 break;
         }
+
+        if (collision.gameObject.tag == "PowerUP")
+        {
+            int randWeap = Random.Range(1, 5);
+            gameObject.GetComponent<code_PlayerShoot>().changeWeapon(randWeap);
+            Destroy(collision.gameObject, 0.001f);
+        }
     }
 
 }
