@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class code_KatanaDespawn : MonoBehaviour {
 
+   // Animator anim;
 	void Start () {
-        Object.Destroy(gameObject, 0.2f);
+         
+       // anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        Destroy(gameObject, 0.2f);
+        //anim.SetTrigger("StopKatanaAttack");
     }
 }
