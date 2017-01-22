@@ -36,22 +36,26 @@ public class code_Megalodon : MonoBehaviour {
     }
 
     void FixedUpdate () {
-        if (!pause)
+        if(target != null)
         {
-            getBossStateAndProceed();
-        }
-
-        // State 1 Y axis enraged fast movement
-        if(stateMode == 1)
-        {
-            if (gameObject.transform.position.y > maxY_Axis_Range)
+            if (!pause)
             {
-                sharkY_speed = sharkY_speed * -1;
-            } else if (gameObject.transform.position.y < maxY_Axis_Range * -1)
-            {
-                sharkY_speed = sharkY_speed * -1;
+                getBossStateAndProceed();
             }
-            gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + sharkY_speed);
+
+            // State 1 Y axis enraged fast movement
+            if (stateMode == 1)
+            {
+                if (gameObject.transform.position.y > maxY_Axis_Range)
+                {
+                    sharkY_speed = sharkY_speed * -1;
+                }
+                else if (gameObject.transform.position.y < maxY_Axis_Range * -1)
+                {
+                    sharkY_speed = sharkY_speed * -1;
+                }
+                gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + sharkY_speed);
+            }
         }
 	}
 
@@ -97,10 +101,11 @@ public class code_Megalodon : MonoBehaviour {
             
         }
 
-        if(gameObject.transform.position.y < target.transform.position.y)
+        if (gameObject.transform.position.y+0.5f < target.transform.position.y)
         {
             gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + 0.050f);
-        } else if (gameObject.transform.position.y > target.transform.position.y)
+        }
+        else if (gameObject.transform.position.y-0.5f > target.transform.position.y)
         {
             gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.050f);
         }
