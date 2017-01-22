@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class code_SpawnObjectRandom : MonoBehaviour
 {
-
     public GameObject spawnObject;
     public float xPos;
     public float yPosInterval;
-    public float timeInterval;
+    public float minTimeRange;
+    public float maxTimeRange;
     private float initTime;
-    // Use this for initialization
+
     void Start()
     {
-        initTime = timeInterval;
+        initTime = Random.Range(minTimeRange, maxTimeRange);
     }
 
-    // Update is called once per frame
     private void Update()
     {
         Spawn();
@@ -29,7 +28,8 @@ public class code_SpawnObjectRandom : MonoBehaviour
         {
             GameObject newObject = Instantiate(spawnObject);
             newObject.GetComponent<Transform>().position = new Vector2(xPos, Random.Range(yPosInterval, -yPosInterval));
-            initTime = timeInterval;
+            float randTimeInterval = Random.Range(minTimeRange, maxTimeRange);
+            initTime = randTimeInterval;
 
         }
     }

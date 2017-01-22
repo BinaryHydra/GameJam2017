@@ -6,6 +6,7 @@ public class code_PlayerShoot : MonoBehaviour {
     public GameObject player;
     public GameObject playerBullet;
     public GameObject katanaObject;
+    public float gunLocationCorectionX;
     private float bulletSpeed = 20;
     private bool reloading = false;
     private float reloadTimer;
@@ -15,9 +16,11 @@ public class code_PlayerShoot : MonoBehaviour {
     private bool weaponAuto;
     private bool meleeMode;
     private Animator anim;
+    private Vector3 gunPlaceCorection;
 
     void Start()
     {
+        gunPlaceCorection = new Vector3(gunLocationCorectionX, 0, 0);
         anim = GetComponent<Animator>();
         meleeMode = true;
         weaponAuto = false;
@@ -126,21 +129,28 @@ public class code_PlayerShoot : MonoBehaviour {
             Vector2 direction = target - playerPos;
             direction.Normalize();
 
-            GameObject projectile = (GameObject)Instantiate(playerBullet, player.transform.position, Quaternion.identity);
+            GameObject projectile = (GameObject)Instantiate(playerBullet, player.transform.position + gunPlaceCorection, Quaternion.identity);
             projectile.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
 
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            projectile.transform.rotation = Quaternion.AngleAxis(angle, transform.forward);
+
             // Shotgun two additional side bullets
-            if(weapon == 3)
+            if (weapon == 3)
             {
                 direction.y += 0.12f;
                 direction.Normalize();
-                GameObject projectile1 = (GameObject)Instantiate(playerBullet, player.transform.position, Quaternion.identity);
+                GameObject projectile1 = (GameObject)Instantiate(playerBullet, player.transform.position + gunPlaceCorection, Quaternion.identity);
                 projectile1.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+
+                projectile1.transform.rotation = Quaternion.AngleAxis(angle, transform.forward);
 
                 direction.y -= 0.24f;
                 direction.Normalize();
-                GameObject projectile2 = (GameObject)Instantiate(playerBullet, player.transform.position, Quaternion.identity);
+                GameObject projectile2 = (GameObject)Instantiate(playerBullet, player.transform.position + gunPlaceCorection, Quaternion.identity);
                 projectile2.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+
+                projectile2.transform.rotation = Quaternion.AngleAxis(angle, transform.forward);
             }
 
             consumeAmmo();
@@ -158,8 +168,11 @@ public class code_PlayerShoot : MonoBehaviour {
             Vector2 direction = target - playerPos;
             direction.Normalize();
 
-            GameObject projectile = (GameObject)Instantiate(playerBullet, player.transform.position, Quaternion.identity);
+            GameObject projectile = (GameObject)Instantiate(playerBullet, player.transform.position + gunPlaceCorection, Quaternion.identity);
             projectile.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            projectile.transform.rotation = Quaternion.AngleAxis(angle, transform.forward);
 
             consumeAmmo();
             reloading = true;
@@ -168,10 +181,12 @@ public class code_PlayerShoot : MonoBehaviour {
 
     void katanaSliceAttack()
     {
+        
         if (Input.GetMouseButtonDown(0) && !reloading && player != null)
         {
+            anim.SetTrigger("Shooting");
             Instantiate(katanaObject,
-            new Vector2(player.transform.position.x + 1.62f, player.transform.position.y - 0.61f),
+            new Vector2(player.transform.position.x + 0.25f, player.transform.position.y ),
             Quaternion.identity);
 
             reloading = true;
@@ -189,6 +204,7 @@ public class code_PlayerShoot : MonoBehaviour {
             {
                 reloading = false;
                 reloadTimer = reloadDefault;
+                anim.SetTrigger("StopKatanaAttack");
             }
         }
     }

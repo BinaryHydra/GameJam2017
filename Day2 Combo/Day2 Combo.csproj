@@ -83,7 +83,11 @@
     <Compile Include="Assets\Scripts\Despawn Scripts\code_DeleteBullet.cs" />
     <Compile Include="Assets\Scripts\Despawn Scripts\code_KatanaDespawn.cs" />
     <Compile Include="Assets\Scripts\Monsters\Bosses\code_Megalodon.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\code_BackGround.cs" />
     <Compile Include="Assets\Scripts\code_Bullet01.cs" />
+    <Compile Include="Assets\Scripts\code_GunRotation.cs" />
+    <Compile Include="Assets\Scripts\code_Level.cs" />
     <Compile Include="Assets\Scripts\code_PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\code_PlayerShoot.cs" />
     <Compile Include="Assets\Scripts\code_SpawnObject.cs" />
