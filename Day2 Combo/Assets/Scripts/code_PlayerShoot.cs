@@ -31,10 +31,10 @@ public class code_PlayerShoot : MonoBehaviour {
     void Update () {
 
         // Test key pad weapon change
-        if (Input.GetKeyDown(KeyCode.Keypad1)) changeWeapon(0);
-        if (Input.GetKeyDown(KeyCode.Keypad2)) changeWeapon(1);
-        if (Input.GetKeyDown(KeyCode.Keypad3)) changeWeapon(2);
-        if (Input.GetKeyDown(KeyCode.Keypad4)) changeWeapon(3);
+        //if (Input.GetKeyDown(KeyCode.Keypad1)) changeWeapon(0);
+        //if (Input.GetKeyDown(KeyCode.Keypad2)) changeWeapon(1);
+        //if (Input.GetKeyDown(KeyCode.Keypad3)) changeWeapon(2);
+        //if (Input.GetKeyDown(KeyCode.Keypad4)) changeWeapon(3);
 
         if (meleeMode)
         {
@@ -68,7 +68,7 @@ public class code_PlayerShoot : MonoBehaviour {
     }
 
     // Changes weapon on power up
-    void changeWeapon(int type)
+    public void changeWeapon(int type)
     {
         weapon = type;
 

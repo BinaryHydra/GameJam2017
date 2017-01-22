@@ -94,6 +94,7 @@
     <Compile Include="Assets\Scripts\code_PlayerShoot.cs" />
     <Compile Include="Assets\Scripts\code_SpawnObject.cs" />
     <Compile Include="Assets\Scripts\code_SpawnObjectRandom.cs" />
+    <Compile Include="Assets\scr_powerUPdash.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

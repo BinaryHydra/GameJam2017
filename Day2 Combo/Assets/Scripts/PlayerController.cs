@@ -18,6 +18,13 @@ public class PlayerController : MonoBehaviour {
             Destroy(collision.gameObject, 0.001f);
             if (currentPlayerHealth == 0) Destroy(gameObject, 0.001f);
         }
+
+        if (collision.gameObject.tag == "PowerUP")
+        {
+            int randWeap = Random.Range(1, 5);
+            gameObject.GetComponent<code_PlayerShoot>().changeWeapon(randWeap);
+            Destroy(collision.gameObject, 0.001f);
+        }
     }
 
 }
