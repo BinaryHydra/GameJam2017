@@ -17,9 +17,14 @@ public class code_PlayerShoot : MonoBehaviour {
     private bool meleeMode;
     private Animator anim;
     private Vector3 gunPlaceCorection;
+    public AudioClip ACdeagle;
+    public AudioClip ACak47;
+    public AudioClip ACkatana;
+    private AudioSource sound;
 
     void Start()
     {
+        sound = GetComponent<AudioSource>();
         gunPlaceCorection = new Vector3(gunLocationCorectionX, 0, 0);
         anim = GetComponent<Animator>();
         meleeMode = true;
@@ -185,6 +190,8 @@ public class code_PlayerShoot : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) && !reloading && player != null)
         {
             anim.SetTrigger("Shooting");
+            sound.clip = ACkatana;
+            sound.Play();
             Instantiate(katanaObject,
             new Vector2(player.transform.position.x + 0.25f, player.transform.position.y ),
             Quaternion.identity);
@@ -200,11 +207,12 @@ public class code_PlayerShoot : MonoBehaviour {
         if (reloading)
         {
             reloadTimer -= Time.deltaTime;
+            if (reloadTimer <= 0.1f)
+                anim.SetTrigger("StopKatanaAttack");
             if (reloadTimer <= 0)
             {
                 reloading = false;
                 reloadTimer = reloadDefault;
-                anim.SetTrigger("StopKatanaAttack");
             }
         }
     }
